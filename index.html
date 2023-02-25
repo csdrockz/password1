@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarun's HTML</title>
+</head>
+<body>
+<div id="form1">
+  <form>
+    <label id="l1">Enter your name: </label>
+    <input type="text" id="name" placeholder="" /><br><br>
+    <label id="l2">Enter the password: </label>
+    <input type="password" name="pass" id="pass1" /><br><br>
+    <label id="l3">Re-enter the password: </label>
+    <input type="password" name="pass" id="pass2"/><br><br>
+  </form>
+  <button id="submit">Submit</button>
+</div>
+</body>
+</html>
+<style>
+    #form1{
+        width: 30%;
+        height: 20%;
+        padding: 20px 10px;
+        margin-left: 35%;
+    }
+    #name{
+     margin-left: 35px;   
+    }
+    #pass1{
+        margin-left: 20px;
+    }
+    #submit{
+        background-color: blue;
+        color: red;
+        margin-left: 120px;
+    }
+    body{
+        background-image: linear-gradient(purple,black);
+        color: lime;
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    }
+    input{
+        color: red;
+        background-color: whitesmoke;
+    }
+</style>
+<script>
+document.getElementById('submit').onclick = function(){
+        var upper1=0;
+        var lower1=0;
+        var num1=0;
+        var spec1=0;
+        var num=['1','2','3','4','5','6','7','8','9','0']
+        var special=['!','@','#','$','%','^','&','*','~']
+    var pass=document.getElementById('pass1').value;
+    var pass1=document.getElementById('pass2').value;
+    var i,j;
+    var lowercase=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    var uppercase=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+    if(pass.length>=8){
+        for(i=0;i<pass.length;i++){
+        for(j=0;j<lowercase.length;j++){
+            if(lowercase[j]==pass[i]){
+                console.log('hi');
+                lower1++;
+            }
+        }
+        if(lower1>=1)
+        break;
+    }
+    for(i=0;i<pass.length;i++){
+        for(j=0;j<uppercase.length;j++){
+            if(uppercase[j]==pass[i]){
+                upper1++;
+            }
+        }
+        if(upper1>=1){
+            break;
+        }
+    }
+    for(i=0;i<pass.length;i++){
+        for(j=0;j<num.length;j++){
+            if(num[j]==pass[i]){
+                num1++;
+            }
+        }
+        if(num1>=1){
+            break;
+        }
+    }
+for(i=0;i<pass.length;i++){
+        for(j=0;j<special.length;j++){
+            if(special[j]==pass[i]){
+                spec1++;
+            }
+        }
+        if(spec1>=1){
+            break;
+        }
+    }
+    if(lower1>=1 && upper1>=1 && spec1>=1 && num1>=1 && pass==pass1){
+            window.open("wish.html");
+    }
+    else{
+        window.alert('follow these instructions');
+        window.open('instructions.html');
+        
+    }
+    }
+    else{
+        window.prompt('please enter atleast a password of length 8');
+    }
+}
+</script>
